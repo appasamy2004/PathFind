@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/panzoom/9.4.0/panzoom.min.js"></script>
+
+    <style>
+        #map {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .location {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+        }
+        .path {
+            stroke-width: 2;
+        }
+        .path-cost {
+            font-size: 14px;
+            fill: black;
+        }
+        #controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #output {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+        
+
+    
+</head>
+<body>
+    <h1 style="text-align: center;">Travel Planner</h1>
+    <div id="map"></div>
+    <div id="controls">
+        <label for="start">Start:</label>
+        <select id="start">
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+        <label for="end">End:</label>
+        <select id="end">
+            {% for loc in locations %}
+                <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+        </select>
+        <button onclick="findShortestPath()">Find Shortest Path</button>
+    </div>
+    <div id="output"></div>
+    <script>
+        window.locationsData = {{ locations|tojson }};
+        window.pathsData = {{ paths|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

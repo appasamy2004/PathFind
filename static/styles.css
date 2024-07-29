@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#map {
+    width: 800px;
+    height: 600px;
+    border: 1px solid #000;
+    position: relative;
+    margin: 20px auto;
+}
+
+.location {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.path {
+    stroke: blue;  /* Updated to blue for better visibility */
+    stroke-width: 2;
+}
+
+.path-cost {
+    fill: black;
+    font-size: 16px;  /* Increased font size */
+    font-weight: bold;
+}
+
+#controls {
+    text-align: center;
+    margin: 20px auto;
+}
+
+#output {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
